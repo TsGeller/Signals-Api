@@ -25,7 +25,7 @@ The project uses the following key dependencies (defined in the `pom.xml`):
 The Signal API is a Spring Boot application designed to fulfill a technical test scenario. It reads signal data from a signals.csv file, persists it in a PostgreSQL database, and provides three main functionalities via API routes:
 
 - Retrieve the full list of signals (GET /signals).
-- Retrieve a specific signal by its node_id (GET /signals/{node_id}).
+- Retrieve a specific signal by its node_id (GET /signals/by-node-id?node_id={nodeId}).
 - Retrieve statistics from the data in file.csv (GET /signals/stats).
 
   The application runs in a Docker container managed by Docker Compose, ensuring portability and consistency. It includes unit tests to prevent regressions and follows best practices for configuration and security.
