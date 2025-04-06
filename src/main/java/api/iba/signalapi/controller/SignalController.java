@@ -1,8 +1,10 @@
 package api.iba.signalapi.controller;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
+import org.springframework.web.servlet.NoHandlerFoundException;
 
 import api.iba.signalapi.models.Signal;
 import api.iba.signalapi.repository.SignalRepository;
@@ -39,10 +41,15 @@ public class SignalController {
          * @return
          */
         @GetMapping("/by-node-id")
-        public ResponseEntity<Signal> getSignalByNodeId(@RequestParam("node_id") String nodeId) {
-                return signalRepository.findById(nodeId)
-                                .map(ResponseEntity::ok)
-                                .orElse(ResponseEntity.notFound().build());
+        public ResponseEntity<?> getSignalByNodeId(@RequestParam("node_id") String nodeId) {
+                Optional<Signal> signal = signalRepository.findById(nodeId);
+                if (signal.isPresent()) {
+                        return ResponseEntity.ok(signal.get());
+                } else {
+                        return ResponseEntity
+                                        .status(HttpStatus.NOT_FOUND)
+                                        .body("Erreur 404 : Le signal avec le nodeId '" + nodeId + "' n'existe pas.");
+                }
         }
 
         /**

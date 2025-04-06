@@ -55,7 +55,7 @@ mvn spring-boot:run
 docker-compose up --build
 ```
 
-### Docker Compose Configuration
+### 1. Docker Compose Configuration
 
 The docker-compose.yml file defines two services:
 
