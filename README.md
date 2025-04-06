@@ -55,10 +55,17 @@ mvn spring-boot:run
 docker-compose up --build
 ```
 
+### Docker Compose Configuration
+
+The docker-compose.yml file defines two services:
+
+- db (PostgreSQL Database)
+- backend (Spring Boot Application):
+
 ## Running Tests
 
 The tests use the **H2 in-memory database** instead of PostgreSQL to avoid creating an additional database instance.  
-The logic remains the same as with PostgreSQL.
+The logic remains the same as with PostgreSQL, and all routes are tested to ensure correct functionality.
 
 ```bash
 mvn test
