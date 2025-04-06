@@ -24,6 +24,7 @@ spring-boot.log
 application-local.properties
 application-dev.properties
 application-prod.properties
+application.properties
 
 # Dependency directories
 /lib/
